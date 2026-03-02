@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: rearc_schema
+    database: rearc
+    schema: rearc_schema
+    tables:
+      - name: stg_population_raw
+        columns:
+          - name: year
+            tests:
+              - not_null
+          - name: population
+            tests:
+              - not_null
+      - name: stg_bls_pr_data_current
+        columns:
+          - name: series_id
+            tests:
+              - not_null
+          - name: year
+            tests:
+              - not_null
+          - name: period
+            tests:
+              - not_null
