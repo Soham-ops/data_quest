@@ -91,11 +91,20 @@ Running part 4 runs 1,2,3 and we do as follows
 
 3. AWS_PROFILE=newacct cdk bootstrap aws://$(AWS_PROFILE=newacct aws sts get-caller-identity --query Account --output text)/ap-south-1
 
-4. AWS_PROFILE=newacct cdk deploy RearcDataQuestStack --require-approval never -c account=$(aws sts get-caller-identity --profile newacct --query Account --output text) -c region=ap-south-1
+4. AWS_PROFILE=newacct cdk deploy RearcDataQuestStack --require-approval never -c account=$(aws sts get-caller-identity --profile newacct --query Account --output text) -c region=ap-south-1 -c bucketName=<bucket-name>
 
 5. IFN=$(AWS_PROFILE=newacct aws lambda list-functions --region ap-south-1 --query "Functions[?contains(FunctionName, 'RearcDataQuestStack-IngestLambda')].FunctionName | [0]" --output text)
 
 6. AWS_PROFILE=newacct aws lambda invoke --region ap-south-1 --function-name "$IFN" --invocation-type Event /tmp/ingest_async_out.json
+
+7. AWS_PROFILE=newacct aws logs tail "/aws/lambda/$IFN" --since 30m --region ap-south-1
+
+8. AFN=$(AWS_PROFILE=newacct aws lambda list-functions --region ap-south-1 --query "Functions[?contains(FunctionName, 'RearcDataQuestStack-AnalyticsLambda')].FunctionName | [0]" --output text)
+
+
+9. AWS_PROFILE=newacct aws logs tail "/aws/lambda/$AFN" --since 30m --region ap-south-1
+
+
 
 
 

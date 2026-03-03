@@ -15,3 +15,7 @@ build/
 .terraform/
 cdk.out/
 logs/
+
+# AWS CLI local installer artifacts (not needed in source repo)
+infra/cdk_app/awscliv2.zip
+infra/cdk_app/aws/
