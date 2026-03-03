@@ -4,13 +4,13 @@ Basically a pipeline in which we collect public  data over 2 workers dump it to 
 ### Architecture (Part 1-4)
 1. s3 is our data lake
 
-2. Ingest Lambda([text](src/rearc_data_quest/lambda_handlers/ingest_handler.py)) takes care of our ingestion part 1 and part 2
+2. Ingest Lambda((src/rearc_data_quest/lambda_handlers/ingest_handler.py)) takes care of our ingestion part 1 and part 2
 
 3. its started daily via EventBridge
 
-4. Analytics Lambda ([text](src/rearc_data_quest/lambda_handlers/analytics_handler.py)) is responsible for part 3 
+4. Analytics Lambda ((src/rearc_data_quest/lambda_handlers/analytics_handler.py)) is responsible for part 3 
 
-5. Databricks Notebook provided in the notebooks folder [text](notebooks) reads data from s3 creates staging 
+5. Databricks Notebook provided in the notebooks folder (notebooks) reads data from s3 creates staging 
 tables runs dbt models and test
 
 6. Secret Manager is storing all the sensitive creds
@@ -194,6 +194,6 @@ Like in the notebook we have used the databrikcs pat directly (which we have rot
    Expand dbt tests (freshness, uniqueness, accepted values) and add payload contract checks.
 
 
-### Additional Images Provide in doc named Supporting showcasing various stages of the run
+### Additional Images Provide in doc named Supporting docs showcasing various stages of the project run
 
 
