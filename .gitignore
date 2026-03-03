@@ -16,6 +16,6 @@ build/
 cdk.out/
 logs/
 
-# AWS CLI local installer artifacts (not needed in source repo)
+# AWS CLI local installer artifacts 
 infra/cdk_app/awscliv2.zip
 infra/cdk_app/aws/
